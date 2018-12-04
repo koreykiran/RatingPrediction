@@ -224,13 +224,13 @@ The main aim of the project deliverable will be to predict the rating based on t
 
 The programs to recommend were ran on Amazon EC2 Spark cluster. And satisfactory recommendations were obtained using 3 methods.
 
-* k-Nearest Neighbor implementation.
-
-<img src="images/Emoticons/PCS.png" alt ="Pearson Correlation Coefficient Recommendation" class = "inline"/>
-
 * Naive Bayes implementation.
 
-<img src="images/Emoticons/ALS.png" alt ="Alternating Least Squares Recommendation" class = "inline"/>
+<img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NB.JPG" alt ="Pearson Correlation Coefficient Recommendation" class = "inline"/>
+
+* Naive Bayes - Sk-learn library 
+
+<img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NBLib.png" alt ="Naive Bayes Implementation" class = "inline"/>
 
 ## Conclusion:
 
@@ -245,13 +245,10 @@ The programs to recommend were ran on Amazon EC2 Spark cluster. And satisfactory
 
 ## Code Snippet:
 
-* Data Cleaning
-
-<img src="imagePath/imageFile.png" class = "inline"/>
-
-* kNN
-
-<img src="imagePath/imageFile.png" class = "inline"/>
+* [KNN](https://github.com/koreykiran/RatingPrediction/blob/master/KNN.ipynb)
+* [KNN - Sklearn](https://github.com/koreykiran/RatingPrediction/blob/master/KNN_lib.ipynb)
+* [Naive Bayes](https://github.com/koreykiran/RatingPrediction/blob/master/NB.ipynb)
+* [Naive Bayes - sklearn](https://github.com/koreykiran/RatingPrediction/blob/master/NB-Library.ipynb)
 
 ## Challenges Faced:
 
