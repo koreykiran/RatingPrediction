@@ -56,7 +56,7 @@
 <div class="stackedit__right">
     <div class="stackedit__html">
         <h1 id="cloud-computing-for-data-analysis-rating-prediction-system">Cloud Computing for Data Analysis: Rating Prediction System</h1>
-        <img src="imagePath/imageFile.jpg" class="inline">
+        <p><img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/logo.png?raw=true" alt="" width="300"></p>
         <h2 id="authors">Authors:</h2>
         <ul>
             <li>Akshay Bankar (<a href="mailto:abankar1@uncc.edu">abankar1@uncc.edu</a>)</li>
@@ -105,28 +105,27 @@
         <h2 id="tasks-involved-and-steps-implemented">Tasks Involved and Steps Implemented:</h2>
         <ul>
             <li>Understanding the algorithm</li>
-            <li>Setup a cluster using  Amazon EMR with spark.</li>
+            <li>Setup a cluster using  Amazon EMR with Spark</li>
             <li>Install necessary software like Jupyter Notebook, sci-kit learn library, nltk library, pandas, etc…</li>
-            <li>Implementing k-Nearest Neighbors and Naive Bayes with sci-kit learn Library.</li>
-            <li>Deploying the code and data on Amazon EMR.</li>
-            <li>Output generation.</li>
-            <li>Implementing k-Nearest Neighbors and Naive Bayes with pyspark.</li>
-            <li>Execute the algorithms and generate reports.</li>
+            <li>Implementing k-Nearest Neighbors and Naive Bayes with sci-kit learn library</li>
+            <li>Deploying the code and data on Amazon EMR</li>
+            <li>Output generation</li>
+            <li>Implementing k-Nearest Neighbors and Naive Bayes with PySpark</li>
+            <li>Execute the algorithms and generate reports</li>
             <li>Project Report</li>
         </ul>
         <h2 id="algorithms-">Algorithms :</h2>
-        <hr>
-        <h3 id="k-nearest-neighbor----">K-Nearest Neighbor: —</h3>
-        <p>K-nearest neighbour clustering (KNN) is a supervised classification technique that looks at the nearest neighbours, in a training set of classified instances, of an unclassified instance in order to identify the class to which it belongs.</p>
-        <p>The model for KNN is the entire training dataset. When a prediction is required for a unseen data instance, the kNN algorithm will search through the training dataset for the k-most similar instances.<br>
+        <h3 id="k-nearest-neighbor----">k Nearest Neighbor: —</h3>
+        <p>k Nearest Neighbour clustering (kNN) is a supervised classification technique that looks at the nearest neighbours, in a training set of classified instances, of an unclassified instance in order to identify the class to which it belongs.</p>
+        <p>The model for kNN is the entire training dataset. When a prediction is required for a unseen data instance, the kNN algorithm will search through the training dataset for the k-most similar instances.<br>
             The prediction attribute of the most similar instances is summarized and returned as the prediction for the unseen instance.</p>
         <p>The similarity measure is dependent on the type of data. For real-valued data, the Euclidean distance can be used.<br>
-            Other other types of data such as categorical or binary data, Hamming distance can be used.</p>
+            For other types of data such as categorical or binary data, Hamming distance can be used.</p>
         <p>In the case of regression problems, the average of the predicted attribute may be returned.<br>
             In the case of classification, the most prevalent class may be returned.</p>
-        <p>The KNN algorithm belongs to the family of instance-based, competitive learning and lazy learning algorithms.</p>
+        <p>The kNN algorithm belongs to the family of instance-based, competitive learning and lazy learning algorithms.</p>
         <p>Instance-based algorithms are those algorithms that model the problem using data instances (or rows) in order to make predictive decisions.<br>
-            The KNN algorithm is an extreme form of instance-based methods because all training observations are retained as part of the model.</p>
+            The kNN algorithm is an extreme form of instance-based methods because all training observations are retained as part of the model.</p>
         <p>It is a competitive learning algorithm, because it internally uses competition between model elements (data instances) in order to make a predictive decision.<br>
             The objective similarity measure between data instances causes each data instance to compete to “win” or be most similar to a given unseen data instance and contribute to a prediction.</p>
         <p>Lazy learning refers to the fact that the algorithm does not build a model until the time that a prediction is required.<br>
@@ -134,8 +133,9 @@
             A disadvantage is that it can be computationally expensive to repeat the same or similar searches over larger training datasets.</p>
         <hr>
         <blockquote>
-            <p><strong>Procedure</strong> —</p>
+            <p><strong>Procedure</strong></p>
         </blockquote>
+        <hr>
         <ul>
             <li>Load data (here data is loaded from a file)</li>
             <li>Pre process the data using NLP techniques
@@ -159,7 +159,7 @@
                     <li>Which is the Square root of sum of squares of the difference between the values of the instances.</li>
                 </ul>
             </li>
-            <li>Select the K nearest neighbours of the test instance</li>
+            <li>Select the k nearest neighbours of the test instance</li>
             <li>Assign the test instance to the class most represented in these nearest neighbours</li>
         </ul>
         <blockquote>
@@ -177,8 +177,9 @@
         <p>In the Bayesian analysis, the final classification is produced by combining both sources of information, i.e., the prior and the likelihood, to form a posterior probability using the Bayes’ rule.</p>
         <hr>
         <blockquote>
-            <p><strong>Procedure</strong> —</p>
+            <p><strong>Procedure</strong></p>
         </blockquote>
+        <hr>
         <ul>
             <li>Load data (here data is loaded from a file)</li>
             <li>Pre process the data using NLP techniques
@@ -209,8 +210,8 @@
         </ol>
         <h4 id="likely-to-accomplish">2. Likely to accomplish</h4>
         <ol>
-            <li>Compare the results of KNN and Naïve-Bayes implemented algorithms.</li>
-            <li>Implementation of KNN model with sci-kit libraries and comparison of the accuracy</li>
+            <li>Compare the results of kNN and Naïve-Bayes implemented algorithms.</li>
+            <li>Implementation of kNN model with sci-kit libraries and comparison of the accuracy</li>
             <li>Implementation of Naïve Bayes model with sci-kit libraries and comparison of the accuracy</li>
             <li>Documentation and online-publishing of the codebase.</li>
         </ol>
@@ -218,13 +219,13 @@
         <ol>
             <li>Compare the results of the implemented models with the library implementations like sci-kit learn</li>
             <li>Suggested modifications/changes in the existing or project implementation.</li>
-            <li><s>Perform K-Fold cross validation and tune the algorithms by testing it on different alpha values for Naïve Bayes and K values for KNN algorithms.</s></li>
+            <li><s>Perform K-Fold cross validation and tune the algorithms by testing it on different alpha values for Naïve Bayes and K values for kNN algorithms.</s></li>
             <li><s>Creating a easy to use library that one can use for analysis purpose.</s></li>
         </ol>
         <h2 id="tools--technology">Tools &amp; Technology</h2>
         <ul>
             <li>Amazon EMR (Spark 2.2.0) (1 master and 2 slaves) for running the program on cluster.</li>
-            <li>Apache Spark - pySpark</li>
+            <li>Apache Spark - PySpark</li>
             <li>Jupyter Notebook</li>
             <li>Git for tracking the code changes.</li>
             <li>GitHub for hosting the website.</li>
@@ -232,49 +233,74 @@
         <h2 id="installation">Installation</h2>
         <ol>
             <li>Create a Spark Cluster on Amazon EMR and get the details of the cluster to use it on Terminal.<br>
-                Choose the following configuration for the cluster:<pre><code></code></pre>
-            </li>
+                Choose the following configuration for the cluster:</li>
         </ol>
-        <p>Spark: Spark 2.3.2 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0 ~~~~2. Connect to the Cluster with the keypair you selected.<br>
-            You might need to add SHH rule to the Master EC2 Security group</p>
-        <pre><code>ssh -i keypair.pem  hadoop@ec2-52-91-121-171.compute-1.amazonaws.com ~~~~3. Copy all the Jupyter notebooks and Data files to Master EC2 instance
-&gt; You can use WinScp or scp command to do this.
-
-4. Install / Import following packages to the cluster.
+        <pre><code>Spark: Spark 2.3.2 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0
 </code></pre>
-        <p>sudo pip install jupyter sudo  pip install sklearn sudo pip install pandas sudo pip install -U nltk ~~~~  Open python and execute the following code to download the nltk data.</p>
-        <pre><code>import nltk nltk.download("stopwords") nltk.download("wordnet") ~~~~5. Repeat Step 2 and 3 to the Slave EC2 instances.
-In our case we had 2 slave EC2 instances.
-To connect to Slaves you have to login as **ec2-user**
+        <ol start="2">
+            <li>Connect to the Cluster with the keypair you selected.<br>
+                You might need to add SHH rule to the Master EC2 Security group</li>
+        </ol>
+        <pre><code> ssh -i keypair.pem  hadoop@ec2-52-91-121-171.compute-1.amazonaws.com
 </code></pre>
-        <p>ssh -i keypair.pem <a href="mailto:ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com">ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com</a> ~~~~  &gt; For nltk you have to move the <strong>nltk_data</strong> to “<strong>/home/</strong>” location</p>
+        <ol start="3">
+            <li>Copy all the Jupyter notebooks and Data files to Master EC2 instance</li>
+        </ol>
+        <blockquote>
+            <p>You can use WinScp or scp command to do this.</p>
+        </blockquote>
+        <ol start="4">
+            <li>Install / Import following packages to the cluster.<pre><code>  sudo pip install jupyter
+  sudo  pip install sklearn
+  sudo pip install pandas
+  sudo pip install -U nltk
+</code></pre>
+                Open python and execute the following code to download the nltk data.<pre><code> import nltk
+ nltk.download("stopwords")
+ nltk.download("wordnet")
+ ~~~~
+</code></pre>
+            </li>
+            <li>Repeat Step 2 and 3 to the Slave EC2 instances.<br>
+                In our case we had 2 slave EC2 instances.<br>
+                To connect to Slaves you have to login as <strong>ec2-user</strong></li>
+        </ol>
+        <pre><code>    ssh -i keypair.pem ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com
+</code></pre>
+        <blockquote>
+            <p>For nltk you have to move the <strong>nltk_data</strong> to “<strong>/home/</strong>” location</p>
+        </blockquote>
         <ol start="6">
-            <li>SSH to your AWS machine with port forwarding and Configure PySpark driver to use Jupyter Notebook<br>
-                For this while connecting to the instance you need to redirect all the request from a specific port from local machine to EC2 instance.<pre><code></code></pre>
-            </li>
-        </ol>
-        <p>ssh -i nvirginia_kkorey.pem -L 8000:localhost:8889 <a href="mailto:hadoop@ec2-52-91-121-171.compute-1.amazonaws.com">hadoop@ec2-52-91-121-171.compute-1.amazonaws.com</a> ~~~~  Once connected you need to add some Environment variables to the path the master instance</p>
-        <pre><code>export PYSPARK_DRIVER_PYTHON=jupyter    export PYSPARK_DRIVER_PYTHON_OPTS='notebook --no-browser --port=8889'
- source ~/.bashrc
+            <li>
+                <p>SSH to your AWS machine with port forwarding and Configure PySpark driver to use Jupyter Notebook<br>
+                    For this while connecting to the instance you need to redirect all the request from a specific port from local machine to EC2 instance.</p>
+                <pre><code>  ssh -i nvirginia_kkorey.pem -L 8000:localhost:8889 hadoop@ec2-52-91-121-171.compute-1.amazonaws.com
 </code></pre>
-        <ol start="7">
-            <li>Access the Jupyter Notebook from your Web-Browser<br>
-                Type <code>pyspark</code> on your AWS machine and copy the Jupyter notebook token displayed.<br>
-                Go to your web-browser and navigate to the following URL:</li>
+                <p>Once connected you need to add some Environment variables to the path the master instance</p>
+                <pre><code>	export PYSPARK_DRIVER_PYTHON=jupyter    export
+	PYSPARK_DRIVER_PYTHON_OPTS='notebook --no-browser --port=8889'
+	source ~/.bashrc
+</code></pre>
+            </li>
+            <li>
+                <p>Access the Jupyter Notebook from your Web-Browser<br>
+                    Type <code>pyspark</code> on your AWS machine and copy the Jupyter notebook token displayed.<br>
+                    Go to your web-browser and navigate to the following URL:</p>
+            </li>
         </ol>
         <p><code>localhost:8000</code></p>
         <p>Paste the copied token in the required field and press  <strong>Log in</strong>.</p>
         <h2 id="results">Results</h2>
         <p>The models were executed in Amazon EMR Cluster:</p>
-        <h4 id="k-nearest-neighbor">K-Nearest Neighbor:</h4>
+        <h4 id="k-nearest-neighbor">k-Nearest Neighbor:</h4>
         <ul>
             <li>
-                <p>Implementation:</p>
-                <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true" alt="KNN implementation" class="inline">
+                <p>Implementation:<br>
+                    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true" alt="Implementation-Implementation" width="600"></p>
             </li>
             <li>
-                <p>Sk-learn library:</p>
-                <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN_lib.png?raw=true" alt="KNN Library" class="inline">
+                <p>Sk-learn library:<br>
+                    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN_lib.png?raw=true=600x" alt="KNN Library"></p>
             </li>
         </ul>
         <blockquote>
@@ -283,12 +309,12 @@ To connect to Slaves you have to login as **ec2-user**
         <h4 id="naive-bayes-classifier-1">Naive Bayes Classifier</h4>
         <ul>
             <li>
-                <p>Implementation:</p>
-                <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NB.png?raw=true" alt="Naive Bayes implementation" class="inline">
+                <p>Implementation:<br>
+                    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NB.png?raw=true=600x" alt="Naive Bayes implementation"></p>
             </li>
             <li>
-                <p>Sk-learn library:</p>
-                <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NBLib.png?raw=true" alt="Naive Bayes Implementation" class="inline">
+                <p>Sk-learn library:<br>
+                    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NBLib.png?raw=true=600x" alt="Naive Bayes Library"></p>
             </li>
         </ul>
         <blockquote>
@@ -307,8 +333,8 @@ To connect to Slaves you have to login as **ec2-user**
         </ul>
         <h2 id="code-snippet">Code Snippet:</h2>
         <ul>
-            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN.ipynb">KNN</a></li>
-            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN_lib.ipynb">KNN - Sklearn</a></li>
+            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN.ipynb">kNN</a></li>
+            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN_lib.ipynb">kNN - Sklearn</a></li>
             <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/NB.ipynb">Naive Bayes</a></li>
             <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/NB-Library.ipynb">Naive Bayes - sklearn</a></li>
         </ul>
@@ -378,22 +404,22 @@ To connect to Slaves you have to login as **ec2-user**
         </table><h2 id="references">References:</h2>
         <ul>
             <li>
-                <p><a href="https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/">KNN implementation in python</a></p>
+                <p><a href="https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/">kNN implementation in python</a></p>
             </li>
             <li>
-                <p><a href="http://digitalsteampunk.blogspot.com/2015/11/k-nearest-neighbour-classification-in.html">KNN distributed implementation</a></p>
+                <p><a href="http://digitalsteampunk.blogspot.com/2015/11/k-nearest-neighbour-classification-in.html">kNN distributed implementation</a></p>
             </li>
             <li>
-                <p><a href="https://stanford.edu/~rezab/classes/cme323/S16/projects_reports/neeb_kurrus.pdf">KNN Algorithm</a></p>
+                <p><a href="https://stanford.edu/~rezab/classes/cme323/S16/projects_reports/neeb_kurrus.pdf">kNN Algorithm</a></p>
             </li>
             <li>
                 <p><a href="https://gist.github.com/tuttelikz/94f750ef3bf14f8a126a">Naive Bayes</a></p>
             </li>
             <li>
-                <p><a href="https://medium.com/@GalarnykMichael/install-spark-on-windows-pyspark-4498a5d8d66c">Install Pyspark in Windows</a></p>
+                <p><a href="https://medium.com/@GalarnykMichael/install-spark-on-windows-pyspark-4498a5d8d66c">Install PySpark in Windows</a></p>
             </li>
             <li>
-                <p><a href="https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4">Setup Pyspark in AWS cluster</a></p>
+                <p><a href="https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4">Setup PySpark in AWS cluster</a></p>
             </li>
             <li>
                 <p><a href="https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4">Install Spark in Ubuntu</a></p>
