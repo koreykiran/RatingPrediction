@@ -1,350 +1,407 @@
-﻿---
+﻿<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadMe.MD</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
 
----
+<body class="stackedit">
+<div class="stackedit__left">
+    <div class="stackedit__toc">
 
-<h1 id="cloud-computing-for-data-analysis-rating-prediction-system">Cloud Computing for Data Analysis: Rating Prediction System</h1>
-<img src="imagePath/imageFile.jpg" class="inline">
-<h2 id="authors">Authors:</h2>
-<ul>
-  <li>Akshay Bankar (<a href="mailto:abankar1@uncc.edu">abankar1@uncc.edu</a>)</li>
-  <li>Keyukumar Hansoti (<a href="mailto:khansoti@uncc.edu">khansoti@uncc.edu</a>)</li>
-  <li>Kiran Korey  (<a href="mailto:kkorey@uncc.edu">kkorey@uncc.edu</a>)</li>
-</ul>
-<h2 id="overview">Overview:</h2>
-<ul>
-  <li>The Project aims to predict ratings based on the reviews provided by the users.</li>
-  <li>The goal of the project is to implement k-Nearest Neighbors and Naive Bayes Algorithm with the help of PySpark.</li>
-</ul>
-<h2 id="motivation">Motivation:</h2>
-<ul>
-  <li>Every single product or place today has its own profile on web giving out information about it to the customers and visitors.</li>
-  <li>It not only tells the user about its features but also the reviews and ratings given to it by the people who have experienced it.</li>
-  <li>This urged us to automate the technique of rating prediction based on reviews and learn about the algorithms behind it.</li>
-  <li>The goal of this project is to determine whether a customer should buy that product or not just by looking at the ratings.</li>
-  <li>This project can be used to any data set which involves user reviews and can predict its ratings though, some pre-processing could be required.</li>
-</ul>
-<h2 id="data">Data:</h2>
-<ul>
-  <li>
-    <p>The Kaggle dataset “Hotel Reviews Data in Europe” will be used which is provided by the <a href="http://booking.com">booking.com</a>.</p>
-  </li>
-  <li>
-    <p>The data set contains 515,000 customer reviews and scoring of 1493 luxury hotels across Europe.</p>
-  </li>
-  <li>
-    <p>The data set contains 17 fields like Hotel Name, Average Score, Negative Review, Positive Review, Review Total Negative Word Counts, Review Total Positive Word Counts, Reviewer Score.</p>
-  </li>
-  <li>
-    <p>Out of the 17 fields, we will be using Negative Review, Positive Review and Reviewer Score fields.</p>
-    <ul>
-      <li>Negative Review: Negative Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be: ‘No Negative’</li>
-      <li>Positive Review: Positive Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be: ‘No Positive’</li>
-      <li>Reviewer Score: Score the reviewer has given to the hotel, based on his/her experience.</li>
-    </ul>
-  </li>
-  <li>
-    <p>The Negative Review and Positive Review will be used as the features and Reviewer Score will be used as targets. The reviews will be converted to count vectors and fed to the model.</p>
-  </li>
-  <li>
-    <h5 id="data-link-515k-hotel-reviews-data-in-europe">Data Link: <a href="https://www.kaggle.com/jiashenliu/515k-hotel-reviews-data-in-europe">515K Hotel Reviews Data in Europe</a></h5>
-  </li>
-</ul>
-<h2 id="tasks-involved-and-steps-implemented">Tasks Involved and Steps Implemented:</h2>
-<ul>
-  <li>Understanding the algorithm</li>
-  <li>Setup a cluster using  Amazon EMR with spark.</li>
-  <li>Install necessary software like Jupyter Notebook, sci-kit learn library, nltk library, pandas, etc…</li>
-  <li>Implementing k-Nearest Neighbors and Naive Bayes with sci-kit learn Library.</li>
-  <li>Deploying the code and data on Amazon EMR.</li>
-  <li>Output generation.</li>
-  <li>Implementing k-Nearest Neighbors and Naive Bayes with pyspark.</li>
-  <li>Execute the algorithms and generate reports.</li>
-  <li>Project Report</li>
-</ul>
-<h2 id="algorithms-">Algorithms :</h2>
-<hr>
-<h3 id="k-nearest-neighbor----">K-Nearest Neighbor: —</h3>
-<p>K-nearest neighbour clustering (KNN) is a supervised classification technique that looks at the nearest neighbours, in a training set of classified instances, of an unclassified instance in order to identify the class to which it belongs.</p>
-<p>The model for KNN is the entire training dataset. When a prediction is required for a unseen data instance, the kNN algorithm will search through the training dataset for the k-most similar instances.<br>
-  The prediction attribute of the most similar instances is summarized and returned as the prediction for the unseen instance.</p>
-<p>The similarity measure is dependent on the type of data. For real-valued data, the Euclidean distance can be used.<br>
-  Other other types of data such as categorical or binary data, Hamming distance can be used.</p>
-<p>In the case of regression problems, the average of the predicted attribute may be returned.<br>
-  In the case of classification, the most prevalent class may be returned.</p>
-<p>The KNN algorithm belongs to the family of instance-based, competitive learning and lazy learning algorithms.</p>
-<p>Instance-based algorithms are those algorithms that model the problem using data instances (or rows) in order to make predictive decisions.<br>
-  The KNN algorithm is an extreme form of instance-based methods because all training observations are retained as part of the model.</p>
-<p>It is a competitive learning algorithm, because it internally uses competition between model elements (data instances) in order to make a predictive decision.<br>
-  The objective similarity measure between data instances causes each data instance to compete to “win” or be most similar to a given unseen data instance and contribute to a prediction.</p>
-<p>Lazy learning refers to the fact that the algorithm does not build a model until the time that a prediction is required.<br>
-  It is lazy because it only does work at the last second. This has the benefit of only including data relevant to the unseen data, called a localized model.<br>
-  A disadvantage is that it can be computationally expensive to repeat the same or similar searches over larger training datasets.</p>
-<hr>
-<blockquote>
-  <p><strong>Procedure</strong> —</p>
-</blockquote>
-<ul>
-  <li>Load data (here data is loaded from a file)</li>
-  <li>Pre process the data using NLP techniques
-    <ul>
-      <li>Tokenize the reviews and remove stop words, emoticons, punctuations, non alphanumeric words</li>
-      <li>Perform stemming on the tokens using Porter Stemmer.</li>
-      <li>Perform lemmatizing on the tokens using WordNetLemmatizer.</li>
-      <li>Convert class labels to int</li>
-    </ul>
-  </li>
-  <li>Convert the reviews to sparse matrix of Count vectors
-    <ul>
-      <li>We have used Sci-kit library CountVectorizer to convert the reviews to sparse matrix.</li>
-      <li>we have ignored the words who appear in more than 70% of the documents and have considered only the top 500 features to reduce the feature space.</li>
-    </ul>
-  </li>
-  <li>Split the data into test and training sets</li>
-  <li>Compute the distance from a test instance (A member of the test set) to all members of the training set
-    <ul>
-      <li>Euclidean distance is used as distance measure.</li>
-      <li>Which is the Square root of sum of squares of the difference between the values of the instances.</li>
-    </ul>
-  </li>
-  <li>Select the K nearest neighbours of the test instance</li>
-  <li>Assign the test instance to the class most represented in these nearest neighbours</li>
-</ul>
-<blockquote>
-  <p>For this algorithm the distance between every instance of the test set has to calculated with every instance of test set, for this we tried using cartesian method, but this causes memory error and also takes a lot of time.<br>
-    So, we changed the approach to collect each test instance and map each train instance to the collected test instance.</p>
-</blockquote>
-<hr>
-<h3 id="naive-bayes-classifier">Naive Bayes Classifier</h3>
-<hr>
-<p>Naive Bayes classifiers are a collection of classification algorithms based on <strong>Bayes’ Theorem</strong>. It is not a single algorithm but a family of algorithms where all of them share a common principle, i.e. every pair of features being classified is independent of each other.</p>
-<p>For example, a fruit may be considered to be an apple if it is red, round, and about 3″ in diameter and as an orange if it is orange, round, and about 2.5″ in diameter . A Naive Bayes classifier considers each of these “features” (red, orange, round , 2.5″ and 3” in diameter) to contribute independently to the probability that the fruit is an apple/orange, regardless of any correlations between features. Features, however, aren’t always independent which is often seen as a shortcoming of the Naive Bayes algorithm and this is why it’s labeled “naive”.</p>
-<p>Naive Bayes is a probabilistic classifier that makes classifications using the <strong>Maximum A Posteriori</strong> decision rule. Hence, to find posterior probability it will first calculate the prior probability and then likelihood of an object to a particular class.</p>
-<p>Prior probabilities are based on previous experience and often it used to predict outcomes before they actually happen.</p>
-<p>To compute the maximum likelihood for new object, calculate the probability of that object belonging to each class label and class with the highest probability will be chosen as a predicted class for that object.</p>
-<p>In the Bayesian analysis, the final classification is produced by combining both sources of information, i.e., the prior and the likelihood, to form a posterior probability using the Bayes’ rule.</p>
-<hr>
-<blockquote>
-  <p><strong>Procedure</strong> —</p>
-</blockquote>
-<ul>
-  <li>Load data (here data is loaded from a file)</li>
-  <li>Pre process the data using NLP techniques
-    <ul>
-      <li>Tokenize the reviews and remove stop words, emoticons, punctuations, non alphanumeric words</li>
-      <li>Perform stemming on the tokens using Porter Stemmer.</li>
-      <li>Perform lemmatizing on the tokens using WordNetLemmatizer.</li>
-      <li>Convert class labels to int</li>
-    </ul>
-  </li>
-  <li>Split the data into test and training sets</li>
-  <li>Calculate the total words in training data and it’s frequency</li>
-  <li>Calculate the number of words in each class and it’s frequency in that class</li>
-  <li>Calculate the probability (likelihood) of a word being in a class and probability<br>
-    of each class</li>
-  <li>Compute the likelihood of the review in each class and choose the class with the maximum likelihood as a predicted class for that review.</li>
-</ul>
-<h2 id="expectationsaspects">Expectations/Aspects</h2>
-<h4 id="what-to-expect">1. What to expect?</h4>
-<p>The main aim of the project deliverable will be to predict the rating based on the reviews provided by the users.</p>
-<ol>
-  <li>Data will be pre-processed using NLP techniques like Stemming and Lemmatization to make sense of the reviews provided by the customer and how harsh can that review be on the rating.</li>
-  <li>After pre processing the Negative Review column and Positive Review column we will combine them to make a single column “Review” which will be used as a input for the algorithms.</li>
-  <li>The data will be divided into training and test set and use training set to train the models and use test set to calculate the accuracy of the models based on the unseen data.</li>
-  <li>Implementation of both the algorithms and a proper documentation of outcomes of this project, which is the prediction of rating for customers reviews.</li>
-  <li>Compute the accuracy of the models.</li>
-  <li>Run the models in Amazon EMR</li>
-</ol>
-<h4 id="likely-to-accomplish">2. Likely to accomplish</h4>
-<ol>
-  <li>Compare the results of KNN and Naïve-Bayes implemented algorithms.</li>
-  <li>Implementation of KNN model with sci-kit libraries and comparison of the accuracy</li>
-  <li>Implementation of Naïve Bayes model with sci-kit libraries and comparison of the accuracy</li>
-  <li>Documentation and online-publishing of the codebase.</li>
-</ol>
-<h4 id="ideal-accomplishments.">3. Ideal Accomplishments.</h4>
-<ol>
-  <li>Compare the results of the implemented models with the library implementations like sci-kit learn</li>
-  <li>Suggested modifications/changes in the existing or project implementation.</li>
-  <li><s>Perform K-Fold cross validation and tune the algorithms by testing it on different alpha values for Naïve Bayes and K values for KNN algorithms.</s></li>
-  <li><s>Creating a easy to use library that one can use for analysis purpose.</s></li>
-</ol>
-<h2 id="tools--technology">Tools &amp; Technology</h2>
-<ul>
-  <li>Amazon EMR (Spark 2.2.0) (1 master and 2 slaves) for running the program on cluster.</li>
-  <li>Apache Spark - pySpark</li>
-  <li>Jupyter Notebook</li>
-  <li>Git for tracking the code changes.</li>
-  <li>GitHub for hosting the website.</li>
-</ul>
-<h2 id="installation">Installation</h2>
-<ol>
-  <li>Create a Spark Cluster on Amazon EMR and get the details of the cluster to use it on Terminal.<br>
-    Choose the following configuration for the cluster:<pre><code></code></pre>
-  </li>
-</ol>
-<p>Spark: Spark 2.3.2 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0 ~~~~2. Connect to the Cluster with the keypair you selected.<br>
-  You might need to add SHH rule to the Master EC2 Security group</p>
-<pre><code>ssh -i keypair.pem  hadoop@ec2-52-91-121-171.compute-1.amazonaws.com ~~~~3. Copy all the Jupyter notebooks and Data files to Master EC2 instance
+        <ul>
+            <li><a href="#cloud-computing-for-data-analysis-rating-prediction-system">Cloud Computing for Data Analysis: Rating Prediction System</a>
+                <ul>
+                    <li><a href="#authors">Authors:</a></li>
+                    <li><a href="#overview">Overview:</a></li>
+                    <li><a href="#motivation">Motivation:</a></li>
+                    <li><a href="#data">Data:</a>
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#tasks-involved-and-steps-implemented">Tasks Involved and Steps Implemented:</a></li>
+                    <li><a href="#algorithms-">Algorithms :</a></li>
+                    <li><a href="#expectationsaspects">Expectations/Aspects</a>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li><a href="#tools--technology">Tools & Technology</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#results">Results</a>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li><a href="#conclusion">Conclusion:</a></li>
+                    <li><a href="#future-scope">Future Scope:</a></li>
+                    <li><a href="#code-snippet">Code Snippet:</a></li>
+                    <li><a href="#challenges-faced">Challenges Faced:</a></li>
+                    <li><a href="#work-division">Work Division:</a></li>
+                    <li><a href="#references">References:</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<div class="stackedit__right">
+    <div class="stackedit__html">
+        <h1 id="cloud-computing-for-data-analysis-rating-prediction-system">Cloud Computing for Data Analysis: Rating Prediction System</h1>
+        <img src="imagePath/imageFile.jpg" class="inline">
+        <h2 id="authors">Authors:</h2>
+        <ul>
+            <li>Akshay Bankar (<a href="mailto:abankar1@uncc.edu">abankar1@uncc.edu</a>)</li>
+            <li>Keyukumar Hansoti (<a href="mailto:khansoti@uncc.edu">khansoti@uncc.edu</a>)</li>
+            <li>Kiran Korey  (<a href="mailto:kkorey@uncc.edu">kkorey@uncc.edu</a>)</li>
+        </ul>
+        <h2 id="overview">Overview:</h2>
+        <ul>
+            <li>The Project aims to predict ratings based on the reviews provided by the users.</li>
+            <li>The goal of the project is to implement k-Nearest Neighbors and Naive Bayes Algorithm with the help of PySpark.</li>
+        </ul>
+        <h2 id="motivation">Motivation:</h2>
+        <ul>
+            <li>Every single product or place today has its own profile on web giving out information about it to the customers and visitors.</li>
+            <li>It not only tells the user about its features but also the reviews and ratings given to it by the people who have experienced it.</li>
+            <li>This urged us to automate the technique of rating prediction based on reviews and learn about the algorithms behind it.</li>
+            <li>The goal of this project is to determine whether a customer should buy that product or not just by looking at the ratings.</li>
+            <li>This project can be used to any data set which involves user reviews and can predict its ratings though, some pre-processing could be required.</li>
+        </ul>
+        <h2 id="data">Data:</h2>
+        <ul>
+            <li>
+                <p>The Kaggle dataset “Hotel Reviews Data in Europe” will be used which is provided by the <a href="http://booking.com">booking.com</a>.</p>
+            </li>
+            <li>
+                <p>The data set contains 515,000 customer reviews and scoring of 1493 luxury hotels across Europe.</p>
+            </li>
+            <li>
+                <p>The data set contains 17 fields like Hotel Name, Average Score, Negative Review, Positive Review, Review Total Negative Word Counts, Review Total Positive Word Counts, Reviewer Score.</p>
+            </li>
+            <li>
+                <p>Out of the 17 fields, we will be using Negative Review, Positive Review and Reviewer Score fields.</p>
+                <ul>
+                    <li>Negative Review: Negative Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be: ‘No Negative’</li>
+                    <li>Positive Review: Positive Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be: ‘No Positive’</li>
+                    <li>Reviewer Score: Score the reviewer has given to the hotel, based on his/her experience.</li>
+                </ul>
+            </li>
+            <li>
+                <p>The Negative Review and Positive Review will be used as the features and Reviewer Score will be used as targets. The reviews will be converted to count vectors and fed to the model.</p>
+            </li>
+            <li>
+                <h5 id="data-link-515k-hotel-reviews-data-in-europe">Data Link: <a href="https://www.kaggle.com/jiashenliu/515k-hotel-reviews-data-in-europe">515K Hotel Reviews Data in Europe</a></h5>
+            </li>
+        </ul>
+        <h2 id="tasks-involved-and-steps-implemented">Tasks Involved and Steps Implemented:</h2>
+        <ul>
+            <li>Understanding the algorithm</li>
+            <li>Setup a cluster using  Amazon EMR with spark.</li>
+            <li>Install necessary software like Jupyter Notebook, sci-kit learn library, nltk library, pandas, etc…</li>
+            <li>Implementing k-Nearest Neighbors and Naive Bayes with sci-kit learn Library.</li>
+            <li>Deploying the code and data on Amazon EMR.</li>
+            <li>Output generation.</li>
+            <li>Implementing k-Nearest Neighbors and Naive Bayes with pyspark.</li>
+            <li>Execute the algorithms and generate reports.</li>
+            <li>Project Report</li>
+        </ul>
+        <h2 id="algorithms-">Algorithms :</h2>
+        <hr>
+        <h3 id="k-nearest-neighbor----">K-Nearest Neighbor: —</h3>
+        <p>K-nearest neighbour clustering (KNN) is a supervised classification technique that looks at the nearest neighbours, in a training set of classified instances, of an unclassified instance in order to identify the class to which it belongs.</p>
+        <p>The model for KNN is the entire training dataset. When a prediction is required for a unseen data instance, the kNN algorithm will search through the training dataset for the k-most similar instances.<br>
+            The prediction attribute of the most similar instances is summarized and returned as the prediction for the unseen instance.</p>
+        <p>The similarity measure is dependent on the type of data. For real-valued data, the Euclidean distance can be used.<br>
+            Other other types of data such as categorical or binary data, Hamming distance can be used.</p>
+        <p>In the case of regression problems, the average of the predicted attribute may be returned.<br>
+            In the case of classification, the most prevalent class may be returned.</p>
+        <p>The KNN algorithm belongs to the family of instance-based, competitive learning and lazy learning algorithms.</p>
+        <p>Instance-based algorithms are those algorithms that model the problem using data instances (or rows) in order to make predictive decisions.<br>
+            The KNN algorithm is an extreme form of instance-based methods because all training observations are retained as part of the model.</p>
+        <p>It is a competitive learning algorithm, because it internally uses competition between model elements (data instances) in order to make a predictive decision.<br>
+            The objective similarity measure between data instances causes each data instance to compete to “win” or be most similar to a given unseen data instance and contribute to a prediction.</p>
+        <p>Lazy learning refers to the fact that the algorithm does not build a model until the time that a prediction is required.<br>
+            It is lazy because it only does work at the last second. This has the benefit of only including data relevant to the unseen data, called a localized model.<br>
+            A disadvantage is that it can be computationally expensive to repeat the same or similar searches over larger training datasets.</p>
+        <hr>
+        <blockquote>
+            <p><strong>Procedure</strong> —</p>
+        </blockquote>
+        <ul>
+            <li>Load data (here data is loaded from a file)</li>
+            <li>Pre process the data using NLP techniques
+                <ul>
+                    <li>Tokenize the reviews and remove stop words, emoticons, punctuations, non alphanumeric words</li>
+                    <li>Perform stemming on the tokens using Porter Stemmer.</li>
+                    <li>Perform lemmatizing on the tokens using WordNetLemmatizer.</li>
+                    <li>Convert class labels to int</li>
+                </ul>
+            </li>
+            <li>Convert the reviews to sparse matrix of Count vectors
+                <ul>
+                    <li>We have used Sci-kit library CountVectorizer to convert the reviews to sparse matrix.</li>
+                    <li>we have ignored the words who appear in more than 70% of the documents and have considered only the top 500 features to reduce the feature space.</li>
+                </ul>
+            </li>
+            <li>Split the data into test and training sets</li>
+            <li>Compute the distance from a test instance (A member of the test set) to all members of the training set
+                <ul>
+                    <li>Euclidean distance is used as distance measure.</li>
+                    <li>Which is the Square root of sum of squares of the difference between the values of the instances.</li>
+                </ul>
+            </li>
+            <li>Select the K nearest neighbours of the test instance</li>
+            <li>Assign the test instance to the class most represented in these nearest neighbours</li>
+        </ul>
+        <blockquote>
+            <p>For this algorithm the distance between every instance of the test set has to calculated with every instance of test set, for this we tried using cartesian method, but this causes memory error and also takes a lot of time.<br>
+                So, we changed the approach to collect each test instance and map each train instance to the collected test instance.</p>
+        </blockquote>
+        <hr>
+        <h3 id="naive-bayes-classifier">Naive Bayes Classifier</h3>
+        <hr>
+        <p>Naive Bayes classifiers are a collection of classification algorithms based on <strong>Bayes’ Theorem</strong>. It is not a single algorithm but a family of algorithms where all of them share a common principle, i.e. every pair of features being classified is independent of each other.</p>
+        <p>For example, a fruit may be considered to be an apple if it is red, round, and about 3″ in diameter and as an orange if it is orange, round, and about 2.5″ in diameter . A Naive Bayes classifier considers each of these “features” (red, orange, round , 2.5″ and 3” in diameter) to contribute independently to the probability that the fruit is an apple/orange, regardless of any correlations between features. Features, however, aren’t always independent which is often seen as a shortcoming of the Naive Bayes algorithm and this is why it’s labeled “naive”.</p>
+        <p>Naive Bayes is a probabilistic classifier that makes classifications using the <strong>Maximum A Posteriori</strong> decision rule. Hence, to find posterior probability it will first calculate the prior probability and then likelihood of an object to a particular class.</p>
+        <p>Prior probabilities are based on previous experience and often it used to predict outcomes before they actually happen.</p>
+        <p>To compute the maximum likelihood for new object, calculate the probability of that object belonging to each class label and class with the highest probability will be chosen as a predicted class for that object.</p>
+        <p>In the Bayesian analysis, the final classification is produced by combining both sources of information, i.e., the prior and the likelihood, to form a posterior probability using the Bayes’ rule.</p>
+        <hr>
+        <blockquote>
+            <p><strong>Procedure</strong> —</p>
+        </blockquote>
+        <ul>
+            <li>Load data (here data is loaded from a file)</li>
+            <li>Pre process the data using NLP techniques
+                <ul>
+                    <li>Tokenize the reviews and remove stop words, emoticons, punctuations, non alphanumeric words</li>
+                    <li>Perform stemming on the tokens using Porter Stemmer.</li>
+                    <li>Perform lemmatizing on the tokens using WordNetLemmatizer.</li>
+                    <li>Convert class labels to int</li>
+                </ul>
+            </li>
+            <li>Split the data into test and training sets</li>
+            <li>Calculate the total words in training data and it’s frequency</li>
+            <li>Calculate the number of words in each class and it’s frequency in that class</li>
+            <li>Calculate the probability (likelihood) of a word being in a class and probability<br>
+                of each class</li>
+            <li>Compute the likelihood of the review in each class and choose the class with the maximum likelihood as a predicted class for that review.</li>
+        </ul>
+        <h2 id="expectationsaspects">Expectations/Aspects</h2>
+        <h4 id="what-to-expect">1. What to expect?</h4>
+        <p>The main aim of the project deliverable will be to predict the rating based on the reviews provided by the users.</p>
+        <ol>
+            <li>Data will be pre-processed using NLP techniques like Stemming and Lemmatization to make sense of the reviews provided by the customer and how harsh can that review be on the rating.</li>
+            <li>After pre processing the Negative Review column and Positive Review column we will combine them to make a single column “Review” which will be used as a input for the algorithms.</li>
+            <li>The data will be divided into training and test set and use training set to train the models and use test set to calculate the accuracy of the models based on the unseen data.</li>
+            <li>Implementation of both the algorithms and a proper documentation of outcomes of this project, which is the prediction of rating for customers reviews.</li>
+            <li>Compute the accuracy of the models.</li>
+            <li>Run the models in Amazon EMR</li>
+        </ol>
+        <h4 id="likely-to-accomplish">2. Likely to accomplish</h4>
+        <ol>
+            <li>Compare the results of KNN and Naïve-Bayes implemented algorithms.</li>
+            <li>Implementation of KNN model with sci-kit libraries and comparison of the accuracy</li>
+            <li>Implementation of Naïve Bayes model with sci-kit libraries and comparison of the accuracy</li>
+            <li>Documentation and online-publishing of the codebase.</li>
+        </ol>
+        <h4 id="ideal-accomplishments.">3. Ideal Accomplishments.</h4>
+        <ol>
+            <li>Compare the results of the implemented models with the library implementations like sci-kit learn</li>
+            <li>Suggested modifications/changes in the existing or project implementation.</li>
+            <li><s>Perform K-Fold cross validation and tune the algorithms by testing it on different alpha values for Naïve Bayes and K values for KNN algorithms.</s></li>
+            <li><s>Creating a easy to use library that one can use for analysis purpose.</s></li>
+        </ol>
+        <h2 id="tools--technology">Tools &amp; Technology</h2>
+        <ul>
+            <li>Amazon EMR (Spark 2.2.0) (1 master and 2 slaves) for running the program on cluster.</li>
+            <li>Apache Spark - pySpark</li>
+            <li>Jupyter Notebook</li>
+            <li>Git for tracking the code changes.</li>
+            <li>GitHub for hosting the website.</li>
+        </ul>
+        <h2 id="installation">Installation</h2>
+        <ol>
+            <li>Create a Spark Cluster on Amazon EMR and get the details of the cluster to use it on Terminal.<br>
+                Choose the following configuration for the cluster:<pre><code></code></pre>
+            </li>
+        </ol>
+        <p>Spark: Spark 2.3.2 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0 ~~~~2. Connect to the Cluster with the keypair you selected.<br>
+            You might need to add SHH rule to the Master EC2 Security group</p>
+        <pre><code>ssh -i keypair.pem  hadoop@ec2-52-91-121-171.compute-1.amazonaws.com ~~~~3. Copy all the Jupyter notebooks and Data files to Master EC2 instance
 &gt; You can use WinScp or scp command to do this.
 
 4. Install / Import following packages to the cluster.
 </code></pre>
-<p>sudo pip install jupyter sudo  pip install sklearn sudo pip install pandas sudo pip install -U nltk ~~~~  Open python and execute the following code to download the nltk data.</p>
-<pre><code>import nltk nltk.download("stopwords") nltk.download("wordnet") ~~~~5. Repeat Step 2 and 3 to the Slave EC2 instances.
+        <p>sudo pip install jupyter sudo  pip install sklearn sudo pip install pandas sudo pip install -U nltk ~~~~  Open python and execute the following code to download the nltk data.</p>
+        <pre><code>import nltk nltk.download("stopwords") nltk.download("wordnet") ~~~~5. Repeat Step 2 and 3 to the Slave EC2 instances.
 In our case we had 2 slave EC2 instances.
 To connect to Slaves you have to login as **ec2-user**
 </code></pre>
-<p>ssh -i keypair.pem <a href="mailto:ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com">ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com</a> ~~~~  &gt; For nltk you have to move the <strong>nltk_data</strong> to “<strong>/home/</strong>” location</p>
-<ol start="6">
-  <li>SSH to your AWS machine with port forwarding and Configure PySpark driver to use Jupyter Notebook<br>
-    For this while connecting to the instance you need to redirect all the request from a specific port from local machine to EC2 instance.<pre><code></code></pre>
-  </li>
-</ol>
-<p>ssh -i nvirginia_kkorey.pem -L 8000:localhost:8889 <a href="mailto:hadoop@ec2-52-91-121-171.compute-1.amazonaws.com">hadoop@ec2-52-91-121-171.compute-1.amazonaws.com</a> ~~~~  Once connected you need to add some Environment variables to the path the master instance</p>
-<pre><code>export PYSPARK_DRIVER_PYTHON=jupyter    export PYSPARK_DRIVER_PYTHON_OPTS='notebook --no-browser --port=8889'
+        <p>ssh -i keypair.pem <a href="mailto:ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com">ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com</a> ~~~~  &gt; For nltk you have to move the <strong>nltk_data</strong> to “<strong>/home/</strong>” location</p>
+        <ol start="6">
+            <li>SSH to your AWS machine with port forwarding and Configure PySpark driver to use Jupyter Notebook<br>
+                For this while connecting to the instance you need to redirect all the request from a specific port from local machine to EC2 instance.<pre><code></code></pre>
+            </li>
+        </ol>
+        <p>ssh -i nvirginia_kkorey.pem -L 8000:localhost:8889 <a href="mailto:hadoop@ec2-52-91-121-171.compute-1.amazonaws.com">hadoop@ec2-52-91-121-171.compute-1.amazonaws.com</a> ~~~~  Once connected you need to add some Environment variables to the path the master instance</p>
+        <pre><code>export PYSPARK_DRIVER_PYTHON=jupyter    export PYSPARK_DRIVER_PYTHON_OPTS='notebook --no-browser --port=8889'
  source ~/.bashrc
 </code></pre>
-<ol start="7">
-  <li>Access the Jupyter Notebook from your Web-Browser<br>
-    Type <code>pyspark</code> on your AWS machine and copy the Jupyter notebook token displayed.<br>
-    Go to your web-browser and navigate to the following URL:</li>
-</ol>
-<p><code>localhost:8000</code></p>
-<p>Paste the copied token in the required field and press  <strong>Log in</strong>.</p>
-<h2 id="results">Results</h2>
-<p>The models were executed in Amazon EMR Cluster:</p>
-<h4 id="k-nearest-neighbor">K-Nearest Neighbor:</h4>
-<ul>
-  <li>
-    <p>Implementation:</p>
-    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true" alt="KNN implementation" class="inline">
-  </li>
-  <li>
-    <p>Sk-learn library:</p>
-    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN_lib.png?raw=true" alt="KNN Library" class="inline">
-  </li>
-</ul>
-<blockquote>
-  <p>The implemented version of the algorithm achieved an accuracy of <strong>24.415%</strong> and the library version of the algorithm achieved an accuracy of <strong>30.80%</strong>, this validates the implementation of the algorithm.</p>
-</blockquote>
-<h4 id="naive-bayes-classifier-1">Naive Bayes Classifier</h4>
-<ul>
-  <li>
-    <p>Implementation:</p>
-    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NB.png?raw=true" alt="Naive Bayes implementation" class="inline">
-  </li>
-  <li>
-    <p>Sk-learn library:</p>
-    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NBLib.png?raw=true" alt="Naive Bayes Implementation" class="inline">
-  </li>
-</ul>
-<blockquote>
-  <p>The implemented version of the algorithm achieved an accuracy of <strong>30.003%</strong> and the library version of the algorithm achieved an accuracy of <strong>35.52%</strong>, this validates the implementation of the algorithm.</p>
-</blockquote>
-<h2 id="conclusion">Conclusion:</h2>
-<ul>
-  <li>The objective of the project was to predict the rating based on the review and to implement the KNN and Naive Bayes algorithm in a distributed fashion which was accomplished successfully.</li>
-  <li>The accuracy of the models could be improved by changing the features used, which is discussed in the future scope.</li>
-</ul>
-<h2 id="future-scope">Future Scope:</h2>
-<ul>
-  <li>Though the algorithms implemented are correct which can be verified from the accuracy of the library version of the same algorithms, the features choosen was not appropriate.</li>
-  <li>We can choose better features like TF-IDF and consider bigram and Trigram possibilities and also perform feature union by choosing features like POS tagging and considering the similar words also for the words in the reviews.</li>
-  <li>We can package this as a library for use by ecommerce websites.</li>
-</ul>
-<h2 id="code-snippet">Code Snippet:</h2>
-<ul>
-  <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN.ipynb">KNN</a></li>
-  <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN_lib.ipynb">KNN - Sklearn</a></li>
-  <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/NB.ipynb">Naive Bayes</a></li>
-  <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/NB-Library.ipynb">Naive Bayes - sklearn</a></li>
-</ul>
-<h2 id="challenges-faced">Challenges Faced:</h2>
-<ul>
-  <li>Out of Memory Error was one of the biggest challenges that we faced, to resolve this issue we reduced the memory consumption by each task and also moved the execution of Algorithms from local machine to AWS EMR clustures.</li>
-  <li>In AWS EMR we used 1-Master : 2-Slave architecture, at first we installed the necessary packages only in the master instance, but our method of implementation needed the packages to be installed in the slave instances as well, it took a while to figure this out and resolve this issue.</li>
-  <li>When trying  to test the data with library implementation, ran out of memory even in EMR, so to parallelize the prediction and for this we had to brod cast the classifier object to the slave nodes.</li>
-  <li>Could not find the Sk-learn library in DSBA hadoop cluster</li>
-</ul>
-<h2 id="work-division">Work Division:</h2>
-<p>The complete project has been accomplished together with collabrating and taking inputs from all the team members.</p>
+        <ol start="7">
+            <li>Access the Jupyter Notebook from your Web-Browser<br>
+                Type <code>pyspark</code> on your AWS machine and copy the Jupyter notebook token displayed.<br>
+                Go to your web-browser and navigate to the following URL:</li>
+        </ol>
+        <p><code>localhost:8000</code></p>
+        <p>Paste the copied token in the required field and press  <strong>Log in</strong>.</p>
+        <h2 id="results">Results</h2>
+        <p>The models were executed in Amazon EMR Cluster:</p>
+        <h4 id="k-nearest-neighbor">K-Nearest Neighbor:</h4>
+        <ul>
+            <li>
+                <p>Implementation:</p>
+                <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true" alt="KNN implementation" class="inline">
+            </li>
+            <li>
+                <p>Sk-learn library:</p>
+                <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN_lib.png?raw=true" alt="KNN Library" class="inline">
+            </li>
+        </ul>
+        <blockquote>
+            <p>The implemented version of the algorithm achieved an accuracy of <strong>24.415%</strong> and the library version of the algorithm achieved an accuracy of <strong>30.80%</strong>, this validates the implementation of the algorithm.</p>
+        </blockquote>
+        <h4 id="naive-bayes-classifier-1">Naive Bayes Classifier</h4>
+        <ul>
+            <li>
+                <p>Implementation:</p>
+                <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NB.png?raw=true" alt="Naive Bayes implementation" class="inline">
+            </li>
+            <li>
+                <p>Sk-learn library:</p>
+                <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NBLib.png?raw=true" alt="Naive Bayes Implementation" class="inline">
+            </li>
+        </ul>
+        <blockquote>
+            <p>The implemented version of the algorithm achieved an accuracy of <strong>30.003%</strong> and the library version of the algorithm achieved an accuracy of <strong>35.52%</strong>, this validates the implementation of the algorithm.</p>
+        </blockquote>
+        <h2 id="conclusion">Conclusion:</h2>
+        <ul>
+            <li>The objective of the project was to predict the rating based on the review and to implement the KNN and Naive Bayes algorithm in a distributed fashion which was accomplished successfully.</li>
+            <li>The accuracy of the models could be improved by changing the features used, which is discussed in the future scope.</li>
+        </ul>
+        <h2 id="future-scope">Future Scope:</h2>
+        <ul>
+            <li>Though the algorithms implemented are correct which can be verified from the accuracy of the library version of the same algorithms, the features choosen was not appropriate.</li>
+            <li>We can choose better features like TF-IDF and consider bigram and Trigram possibilities and also perform feature union by choosing features like POS tagging and considering the similar words also for the words in the reviews.</li>
+            <li>We can package this as a library for use by ecommerce websites.</li>
+        </ul>
+        <h2 id="code-snippet">Code Snippet:</h2>
+        <ul>
+            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN.ipynb">KNN</a></li>
+            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN_lib.ipynb">KNN - Sklearn</a></li>
+            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/NB.ipynb">Naive Bayes</a></li>
+            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/NB-Library.ipynb">Naive Bayes - sklearn</a></li>
+        </ul>
+        <h2 id="challenges-faced">Challenges Faced:</h2>
+        <ul>
+            <li>Out of Memory Error was one of the biggest challenges that we faced, to resolve this issue we reduced the memory consumption by each task and also moved the execution of Algorithms from local machine to AWS EMR clustures.</li>
+            <li>In AWS EMR we used 1-Master : 2-Slave architecture, at first we installed the necessary packages only in the master instance, but our method of implementation needed the packages to be installed in the slave instances as well, it took a while to figure this out and resolve this issue.</li>
+            <li>When trying  to test the data with library implementation, ran out of memory even in EMR, so to parallelize the prediction and for this we had to brod cast the classifier object to the slave nodes.</li>
+            <li>Could not find the Sk-learn library in DSBA hadoop cluster</li>
+        </ul>
+        <h2 id="work-division">Work Division:</h2>
+        <p>The complete project has been accomplished together with collabrating and taking inputs from all the team members.</p>
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Task</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Akshay Bankar</td>
-    <td>Split data into train and test</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>Compute accuracy of the model</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>Implementation of Naïve Bayes model with sci-kit libraries and comparison of the accuracy</td>
-  </tr>
-  <tr>
-    <td>Keyur Hansoti</td>
-    <td>Pre-processing</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>Build the model by Implementing Naïve Bayes</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>Make a web page illustrating your results</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>Compare the results</td>
-  </tr>
-  <tr>
-    <td>Kiran Korey</td>
-    <td>Install Spark and get EC2 ready for running</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>Build the model by implementing KNN</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>Build the model by Implementing Naïve Bayes</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>Implementation of KNN model with sci-kit libraries and comparison of the accuracy</td>
-  </tr>
-  </tbody>
-</table><h2 id="references">References:</h2>
-<ul>
-  <li>
-    <p><a href="https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/">KNN implementation in python</a></p>
-  </li>
-  <li>
-    <p><a href="http://digitalsteampunk.blogspot.com/2015/11/k-nearest-neighbour-classification-in.html">KNN distributed implementation</a></p>
-  </li>
-  <li>
-    <p><a href="https://stanford.edu/~rezab/classes/cme323/S16/projects_reports/neeb_kurrus.pdf">KNN Algorithm</a></p>
-  </li>
-  <li>
-    <p><a href="https://gist.github.com/tuttelikz/94f750ef3bf14f8a126a">Naive Bayes</a></p>
-  </li>
-  <li>
-    <p><a href="https://medium.com/@GalarnykMichael/install-spark-on-windows-pyspark-4498a5d8d66c">Install Pyspark in Windows</a></p>
-  </li>
-  <li>
-    <p><a href="https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4">Setup Pyspark in AWS cluster</a></p>
-  </li>
-  <li>
-    <p><a href="https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4">Install Spark in Ubuntu</a></p>
-  </li>
-</ul>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Task</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Akshay Bankar</td>
+                <td>Split data into train and test</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Compute accuracy of the model</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Implementation of Naïve Bayes model with sci-kit libraries and comparison of the accuracy</td>
+            </tr>
+            <tr>
+                <td>Keyur Hansoti</td>
+                <td>Pre-processing</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Build the model by Implementing Naïve Bayes</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Make a web page illustrating your results</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Compare the results</td>
+            </tr>
+            <tr>
+                <td>Kiran Korey</td>
+                <td>Install Spark and get EC2 ready for running</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Build the model by implementing KNN</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Build the model by Implementing Naïve Bayes</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Implementation of KNN model with sci-kit libraries and comparison of the accuracy</td>
+            </tr>
+            </tbody>
+        </table><h2 id="references">References:</h2>
+        <ul>
+            <li>
+                <p><a href="https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/">KNN implementation in python</a></p>
+            </li>
+            <li>
+                <p><a href="http://digitalsteampunk.blogspot.com/2015/11/k-nearest-neighbour-classification-in.html">KNN distributed implementation</a></p>
+            </li>
+            <li>
+                <p><a href="https://stanford.edu/~rezab/classes/cme323/S16/projects_reports/neeb_kurrus.pdf">KNN Algorithm</a></p>
+            </li>
+            <li>
+                <p><a href="https://gist.github.com/tuttelikz/94f750ef3bf14f8a126a">Naive Bayes</a></p>
+            </li>
+            <li>
+                <p><a href="https://medium.com/@GalarnykMichael/install-spark-on-windows-pyspark-4498a5d8d66c">Install Pyspark in Windows</a></p>
+            </li>
+            <li>
+                <p><a href="https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4">Setup Pyspark in AWS cluster</a></p>
+            </li>
+            <li>
+                <p><a href="https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4">Install Spark in Ubuntu</a></p>
+            </li>
+        </ul>
 
+    </div>
+</div>
+</body>
+
+</html>
