@@ -222,15 +222,31 @@ The main aim of the project deliverable will be to predict the rating based on t
 
 ## Results
 
-The programs to recommend were ran on Amazon EC2 Spark cluster. And satisfactory recommendations were obtained using 3 methods.
+The models were executed in Amazon EMR Cluster:
 
-* Naive Bayes implementation.
+#### K-Nearest Neighbor:
 
-<img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NB.JPG" alt ="Pearson Correlation Coefficient Recommendation" class = "inline"/>
+* Implementation:
 
-* Naive Bayes - Sk-learn library 
+    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true" alt ="KNN implementation" class = "inline"/>
 
-<img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NBLib.png" alt ="Naive Bayes Implementation" class = "inline"/>
+* Sk-learn library:
+
+    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN_lib.png?raw=true" alt ="KNN Library" class = "inline"/>
+
+> The implemented version of the algorithm achieved an accuracy of **24.415%** and the library version of the algorithm achieved an accuracy of **30.80%**, this validates the implementation of the algorithm.
+
+#### Naive Bayes Classifier
+
+* Implementation:
+
+    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NB.png?raw=true" alt ="Naive Bayes implementation" class = "inline"/>
+
+* Sk-learn library:
+
+    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NBLib.png?raw=true" alt ="Naive Bayes Implementation" class = "inline"/>
+
+ > The implemented version of the algorithm achieved an accuracy of **30.003%** and the library version of the algorithm achieved an accuracy of **35.52%**, this validates the implementation of the algorithm.
 
 ## Conclusion:
 
@@ -254,7 +270,8 @@ The programs to recommend were ran on Amazon EC2 Spark cluster. And satisfactory
 
 * Out of Memory Error was one of the biggest challenges that we faced, to resolve this issue we reduced the memory consumption by each task and also moved the execution of Algorithms from local machine to AWS EMR clustures.
 * In AWS EMR we used 1-Master : 2-Slave architecture, at first we installed the necessary packages only in the master instance, but our method of implementation needed the packages to be installed in the slave instances as well, it took a while to figure this out and resolve this issue.
-* When we were trying  to test the data with library implementation, we used to run out of memory even in EMR, so we to parallelize the prediction and for this we had to brodcast the classifier object to the slave nodes.
+* When trying  to test the data with library implementation, ran out of memory even in EMR, so to parallelize the prediction and for this we had to brod cast the classifier object to the slave nodes.
+* Could not find the Sk-learn library in DSBA hadoop cluster
 
 ## Work Division:
 
@@ -276,10 +293,16 @@ The complete project has been accomplished together with collabrating and taking
 
 
 ## References:
-*
+* [KNN implementation in python](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)
 
-*
+* [KNN distributed implementation](http://digitalsteampunk.blogspot.com/2015/11/k-nearest-neighbour-classification-in.html)
 
-*
+* [KNN Algorithm](https://stanford.edu/~rezab/classes/cme323/S16/projects_reports/neeb_kurrus.pdf)
 
-*
+* [Naive Bayes](https://gist.github.com/tuttelikz/94f750ef3bf14f8a126a)
+
+* [Install Pyspark in Windows](https://medium.com/@GalarnykMichael/install-spark-on-windows-pyspark-4498a5d8d66c)
+
+* [Setup Pyspark in AWS cluster](https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4)
+
+* [Install Spark in Ubuntu](https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4)
