@@ -56,7 +56,7 @@
 <div class="stackedit__right">
     <div class="stackedit__html">
         <h1 id="cloud-computing-for-data-analysis-rating-prediction-system">Cloud Computing for Data Analysis: Rating Prediction System</h1>
-        <p><img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/logo.png?raw=true" alt="" width="300"></p>
+        <p><img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/logo.png?raw=true=300x" alt=""></p>
         <h2 id="authors">Authors:</h2>
         <ul>
             <li>Akshay Bankar (<a href="mailto:abankar1@uncc.edu">abankar1@uncc.edu</a>)</li>
@@ -115,7 +115,9 @@
             <li>Project Report</li>
         </ul>
         <h2 id="algorithms-">Algorithms :</h2>
-        <h3 id="k-nearest-neighbor----">k Nearest Neighbor: —</h3>
+        <hr>
+        <h3 id="k-nearest-neighbor">k-Nearest Neighbor:</h3>
+        <hr>
         <p>k Nearest Neighbour clustering (kNN) is a supervised classification technique that looks at the nearest neighbours, in a training set of classified instances, of an unclassified instance in order to identify the class to which it belongs.</p>
         <p>The model for kNN is the entire training dataset. When a prediction is required for a unseen data instance, the kNN algorithm will search through the training dataset for the k-most similar instances.<br>
             The prediction attribute of the most similar instances is summarized and returned as the prediction for the unseen instance.</p>
@@ -250,23 +252,28 @@
             <p>You can use WinScp or scp command to do this.</p>
         </blockquote>
         <ol start="4">
-            <li>Install / Import following packages to the cluster.<pre><code>  sudo pip install jupyter
-  sudo  pip install sklearn
-  sudo pip install pandas
-  sudo pip install -U nltk
+            <li>
+                <p>Install / Import following packages to the cluster.</p>
+                <pre><code>sudo pip install jupyter
+sudo pip install sklearn
+sudo pip install pandas
+sudo pip install -U nltk
 </code></pre>
-                Open python and execute the following code to download the nltk data.<pre><code> import nltk
+                <p>Open python and execute the following code to download the nltk data.</p>
+                <pre><code> import nltk
  nltk.download("stopwords")
  nltk.download("wordnet")
- ~~~~
+
 </code></pre>
             </li>
-            <li>Repeat Step 2 and 3 to the Slave EC2 instances.<br>
-                In our case we had 2 slave EC2 instances.<br>
-                To connect to Slaves you have to login as <strong>ec2-user</strong></li>
-        </ol>
-        <pre><code>    ssh -i keypair.pem ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com
+            <li>
+                <p>Repeat Step 2 and 3 to the Slave EC2 instances.<br>
+                    In our case we had 2 slave EC2 instances.<br>
+                    To connect to Slaves you have to login as <strong>ec2-user</strong></p>
+                <pre><code>ssh -i keypair.pem ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com
 </code></pre>
+            </li>
+        </ol>
         <blockquote>
             <p>For nltk you have to move the <strong>nltk_data</strong> to “<strong>/home/</strong>” location</p>
         </blockquote>
@@ -292,11 +299,11 @@
         <p>Paste the copied token in the required field and press  <strong>Log in</strong>.</p>
         <h2 id="results">Results</h2>
         <p>The models were executed in Amazon EMR Cluster:</p>
-        <h4 id="k-nearest-neighbor">k-Nearest Neighbor:</h4>
+        <h4 id="k-nearest-neighbor-1">k-Nearest Neighbor:</h4>
         <ul>
             <li>
                 <p>Implementation:<br>
-                    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true" alt="Implementation-Implementation" width="600"></p>
+                    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true=600x" alt="Implementation-Implementation"></p>
             </li>
             <li>
                 <p>Sk-learn library:<br>

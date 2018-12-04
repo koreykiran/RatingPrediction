@@ -1,7 +1,7 @@
 ﻿
 # Cloud Computing for Data Analysis: Rating Prediction System  
   
-![](https://github.com/koreykiran/RatingPrediction/blob/master/images/logo.png?raw=true =300x)
+![](https://github.com/koreykiran/RatingPrediction/blob/master/images/logo.png?raw=true=300x)
   
   
 ## Authors:  
@@ -47,8 +47,9 @@
 * Project Report  
   
 ## Algorithms :  
-
-### k Nearest Neighbor: ---  
+---
+### k-Nearest Neighbor: 
+---  
 k Nearest Neighbour clustering (kNN) is a supervised classification technique that looks at the nearest neighbours, in a training set of classified instances, of an unclassified instance in order to identify the class to which it belongs.  
   
 The model for kNN is the entire training dataset. When a prediction is required for a unseen data instance, the kNN algorithm will search through the training dataset for the k-most similar instances.   
@@ -111,7 +112,7 @@ To compute the maximum likelihood for new object, calculate the probability of t
 In the Bayesian analysis, the final classification is produced by combining both sources of information, i.e., the prior and the likelihood, to form a posterior probability using the Bayes' rule.  
   
 ---  
-> **Procedure** 
+>  **Procedure** 
 ---  
   
 * Load data (here data is loaded from a file)  
@@ -179,24 +180,24 @@ The main aim of the project deliverable will be to predict the rating based on t
    > You can use WinScp or scp command to do this.  
    
 4. Install / Import following packages to the cluster.  
-   ~~~~  
+     ~~~~  
 	 sudo pip install jupyter 
-	 sudo  pip install sklearn 
+	 sudo pip install sklearn 
 	 sudo pip install pandas 
 	 sudo pip install -U nltk 
 	 ~~~~  
-	 Open python and execute the following code to download the nltk data.  
-	  ~~~~  
-	   import nltk 
-	   nltk.download("stopwords") 
-	   nltk.download("wordnet") 
-	   ~~~~
+	 Open python and execute the following code to download the nltk data.
+	 ~~~~  
+	  import nltk 
+	  nltk.download("stopwords") 
+	  nltk.download("wordnet") 
+	  
 5. Repeat Step 2 and 3 to the Slave EC2 instances.  
    In our case we had 2 slave EC2 instances.   
    To connect to Slaves you have to login as **ec2-user**  
-  ~~~~  
-	  ssh -i keypair.pem ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com
-  ~~~~
+	  ~~~~  
+	ssh -i keypair.pem ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com
+	  ~~~~
 > For nltk you have to move the **nltk_data** to "**/home/**" location  
   
 6. SSH to your AWS machine with port forwarding and Configure PySpark driver to use Jupyter Notebook  
@@ -227,7 +228,7 @@ The models were executed in Amazon EMR Cluster:
 #### k-Nearest Neighbor:  
   
 * Implementation:  
-![Implementation-Implementation](https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true =600x)
+![Implementation-Implementation](https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true=600x)
   
 * Sk-learn library:  
   ![KNN Library](https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN_lib.png?raw=true=600x)
@@ -243,6 +244,7 @@ The models were executed in Amazon EMR Cluster:
 ![Naive Bayes Library](https://github.com/koreykiran/RatingPrediction/blob/master/images/NBLib.png?raw=true=600x)
   
  > The implemented version of the algorithm achieved an accuracy of **30.003%** and the library version of the algorithm achieved an accuracy of **35.52%**, this validates the implementation of the algorithm.  
+
 ## Conclusion:  
   
 * The objective of the project was to predict the rating based on the review and to implement the KNN and Naive Bayes algorithm in a distributed fashion which was accomplished successfully.  
