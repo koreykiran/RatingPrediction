@@ -268,7 +268,7 @@ The models were executed in Amazon EMR Cluster:
 * Out of Memory Error was one of the biggest challenges that we faced, to resolve this issue we reduced the memory consumption by each task and also moved the execution of Algorithms from local machine to AWS EMR clustures.  
 * In AWS EMR we used 1-Master : 2-Slave architecture, at first we installed the necessary packages only in the master instance, but our method of implementation needed the packages to be installed in the slave instances as well, it took a while to figure this out and resolve this issue.  
 * When trying  to test the data with library implementation, ran out of memory even in EMR, so to parallelize the prediction and for this we had to brod cast the classifier object to the slave nodes.  
-* Could not find the Sk-learn library in DSBA hadoop cluster  
+* Could not find the scikit-learn library in DSBA hadoop cluster  
   
 ## Work Division:  
   
