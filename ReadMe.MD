@@ -1,7 +1,7 @@
 ﻿
 # Cloud Computing for Data Analysis: Rating Prediction System  
   
-![logo](docs/images/logo.png?raw=true=300x)
+![logo](docs/images/logo.png?=300x)
   
   
 ## Authors:  
