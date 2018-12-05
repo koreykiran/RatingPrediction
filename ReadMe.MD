@@ -1,7 +1,7 @@
 ﻿
 # Cloud Computing for Data Analysis: Rating Prediction System  
   
-![logo](docs/images/logo.png?=300x)
+![logo](./docs/images/logo.png =300px)
   
   
 ## Authors:  
@@ -242,17 +242,17 @@ As we can see from the below screen captures, there is only a difference of arou
 #### k-Nearest Neighbor:  
   
 * Implementation:  
-![Implementation-Implementation](docs/images/KNN.png?raw=true=600x)
+![Implementation-Implementation](docs/images/KNN.png=600x)
   
 * Sk-learn library:  
-  ![KNN Library](docs/images/KNN_lib.png?raw=true=600x)
+  ![KNN Library](docs/images/KNN_lib.png=600x)
   
 > The implemented version of the algorithm achieved an accuracy of **24.415%** and the library version of the algorithm achieved an accuracy of **30.80%**, this validates the implementation of the algorithm.  
   
 #### Naive Bayes Classifier  
   
 * Implementation:  
-    ![Naive Bayes implementation](docs/images/NB.png?raw=true=600x)
+    ![Naive Bayes implementation](docs/images/NB.png=600x)
   
 * Sk-learn library:  
 ![Naive Bayes Library](docs/images/NBLib.png=600x)
