@@ -228,7 +228,7 @@ The models were executed in Amazon EMR Cluster:
 #### k-Nearest Neighbor:  
   
 * Implementation:  
-![Implementation-Implementation](https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN.png?raw=true=600x)
+![knn-Implementation](docs/images/KNN.png)
   
 * Sk-learn library:  
   ![KNN Library](https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN_lib.png?raw=true=600x)
