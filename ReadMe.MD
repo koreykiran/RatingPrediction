@@ -265,7 +265,7 @@ For Naive Bayes we used the complete data set i.e. 500K records.
     
  > The implemented version of the algorithm achieved an accuracy of **30.003%** and the library version of the algorithm achieved an accuracy of **35.52%**, this validates the implementation of the algorithm. 
    
- > ## The difference in the acuracy is because of the default parameters that Sk-learn uses for the algorithms.
+ > ### The difference in the acuracy is because of the default parameters that Sk-learn uses for the algorithms.
    
 ## Conclusion    
  
