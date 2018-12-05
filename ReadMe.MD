@@ -4,26 +4,26 @@
 ![logo](docs/images/logo.png?=300x)
   
   
-## Authors:  
+## Authors  
   
 * Akshay Bankar (abankar1@uncc.edu)   
 * Keyukumar Hansoti (khansoti@uncc.edu)  
 * Kiran Korey  (kkorey@uncc.edu)  
   
-## Overview:  
+## Overview  
   
 * The Project aims to predict ratings based on the reviews provided by the users.  
 * The goal of the project is to implement k-Nearest Neighbors and Naive Bayes Algorithm with the help of PySpark.  
   
   
-## Motivation:  
+## Motivation  
 * Every single product or place today has its own profile on web giving out information about it to the customers and visitors.  
 * It not only tells the user about its features but also the reviews and ratings given to it by the people who have experienced it.  
 * This urged us to automate the technique of rating prediction based on reviews and learn about the algorithms behind it.  
 * The goal of this project is to determine whether a customer should buy that product or not just by looking at the ratings.   
 * This project can be used to any data set which involves user reviews and can predict its ratings though, some pre-processing could be required.  
   
-## Data:  
+## Data  
 * The Kaggle dataset “Hotel Reviews Data in Europe” will be used which is provided by the booking.com.  
 * The data set contains 515,000 customer reviews and scoring of 1493 luxury hotels across Europe.  
 * The data set contains 17 fields like Hotel Name, Average Score, Negative Review, Positive Review, Review Total Negative Word Counts, Review Total Positive Word Counts, Reviewer Score.  
@@ -35,7 +35,7 @@
   
 * #### Data Link: [515K Hotel Reviews Data in Europe](https://www.kaggle.com/jiashenliu/515k-hotel-reviews-data-in-europe)  
   
-## Tasks Involved and Steps Implemented:  
+## Tasks Involved and Steps Implemented  
 
 The project uses classification approach to predict ratings and classify reviews. It includes implementation of two algorithms: K-Nearest Neighbors & Naive Bayes. The tasks involved are as follows:
 
@@ -50,9 +50,9 @@ The project uses classification approach to predict ratings and classify reviews
 * Execute the algorithms and generate reports  
 * Project Report  
   
-## Algorithms :  
+## Algorithms   
 ---
-### k-Nearest Neighbor: 
+### k-Nearest Neighbor 
 ---  
 k Nearest Neighbour clustering (kNN) is a supervised classification technique that looks at the nearest neighbours, in a training set of classified instances, of an unclassified instance in order to identify the class to which it belongs.  
   
@@ -239,7 +239,7 @@ Since the feature we used is just bag-of-words the accuracy of the models is not
 But, the main moto behined this project was to implement the algorithms in a distributed  way, which was accomplished and to verify the corretness of the algorithms, their accuracies were compared with the library versions of the same.
 As we can see from the below screen captures, there is only a difference of around **5%** between the implemented version and the library versions for both the algorithms.
   
-#### k-Nearest Neighbor:  
+#### k-Nearest Neighbor  
   
 * Implementation:  
 ![Implementation-Implementation](docs/images/KNN.png?raw=true=600x)
@@ -259,25 +259,25 @@ As we can see from the below screen captures, there is only a difference of arou
   
  > The implemented version of the algorithm achieved an accuracy of **30.003%** and the library version of the algorithm achieved an accuracy of **35.52%**, this validates the implementation of the algorithm.  
 
-## Conclusion:  
+## Conclusion  
   
 * The objective of the project was to predict the rating based on the review and to implement the kNN and Naive Bayes algorithm in a distributed fashion which was accomplished successfully.  
 * The accuracy of the models could be improved by changing the features used, which is discussed in the future scope.  
   
-## Future Scope:  
+## Future Scope  
   
 * Though the algorithms implemented are correct which can be verified from the accuracy of the library version of the same algorithms, the features choosen was not appropriate.  
 * We can choose better features like TF-IDF and consider bigram and Trigram possibilities and also perform feature union by choosing features like POS tagging and considering the similar words also for the words in the reviews.  
 * We can package this as a library for use by ecommerce websites.  
   
-## Code Snippet:  
+## Code Snippet  
   
 * [kNN](docs/KNN.html)  
 * [kNN - Sklearn](docs/KNN_lib.html)  
 * [Naive Bayes](docs/NB.html)  
 * [Naive Bayes - sklearn](docs/NB-Library.html)  
   
-## Challenges Faced:  
+## Challenges Faced  
   
 * Out of Memory Error was one of the biggest challenges that we faced, to resolve this issue we reduced the memory consumption by each task and also moved the execution of Algorithms from local machine to AWS EMR clustures.
 	*  For kNN  we used the collect loop insted of cartesian product, which was consuming a lot of memory.
@@ -285,7 +285,7 @@ As we can see from the below screen captures, there is only a difference of arou
 * When trying  to test the data with library implementation, ran out of memory even in EMR, so to parallelize the prediction and for this we had to brod cast the classifier object to the slave nodes.  
 * Could not find the scikit-learn library in DSBA hadoop cluster  
   
-## Work Division:  
+## Work Division  
   
 The complete project has been accomplished together with collabrating and taking inputs from all the team members.   
   
@@ -304,7 +304,7 @@ The complete project has been accomplished together with collabrating and taking
 |  | Implementation of KNN model with sci-kit libraries and comparison of the accuracy |  
   
   
-## References: 
+## References 
  
 * [kNN implementation in python](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)  
   
