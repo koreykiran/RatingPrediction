@@ -18,16 +18,9 @@
                     <li><a href="#authors">Authors:</a></li>
                     <li><a href="#overview">Overview:</a></li>
                     <li><a href="#motivation">Motivation:</a></li>
-                    <li>
-                        <p><a href="KNN.html">Install Spark in Ubuntu</a></p>
-                    </li>
                     <li><a href="#data">Data:</a>
                         <ul>
-                            <li>
-                                <ul>
-                                    <li></li>
-                                </ul>
-                            </li>
+                            <li></li>
                         </ul>
                     </li>
                     <li><a href="#tasks-involved-and-steps-implemented">Tasks Involved and Steps Implemented:</a></li>
@@ -102,14 +95,16 @@
                 <p>The Negative Review and Positive Review will be used as the features and Reviewer Score will be used as targets. The reviews will be converted to count vectors and fed to the model.</p>
             </li>
             <li>
-                <h5 id="data-link-515k-hotel-reviews-data-in-europe">Data Link: <a href="https://www.kaggle.com/jiashenliu/515k-hotel-reviews-data-in-europe">515K Hotel Reviews Data in Europe</a></h5>
+                <h4 id="data-link-515k-hotel-reviews-data-in-europe">Data Link: <a href="https://www.kaggle.com/jiashenliu/515k-hotel-reviews-data-in-europe">515K Hotel Reviews Data in Europe</a></h4>
             </li>
         </ul>
         <h2 id="tasks-involved-and-steps-implemented">Tasks Involved and Steps Implemented:</h2>
+        <p>The project uses classification approach to predict ratings and classify reviews. It includes implementation of two algorithms: K-Nearest Neighbors &amp; Naive Bayes. The tasks involved are as follows:</p>
         <ul>
             <li>Understanding the algorithm</li>
             <li>Setup a cluster using  Amazon EMR with Spark</li>
             <li>Install necessary software like Jupyter Notebook, sci-kit learn library, nltk library, pandas, etc…</li>
+            <li>Preprocessing the data</li>
             <li>Implementing k-Nearest Neighbors and Naive Bayes with sci-kit learn library</li>
             <li>Deploying the code and data on Amazon EMR</li>
             <li>Output generation</li>
@@ -146,26 +141,26 @@
             <li>Pre process the data using NLP techniques
                 <ul>
                     <li>Tokenize the reviews and remove stop words, emoticons, punctuations, non alphanumeric words</li>
-                    <li>Perform stemming on the tokens using Porter Stemmer.</li>
-                    <li>Perform lemmatizing on the tokens using WordNetLemmatizer.</li>
+                    <li>Perform stemming on the tokens using Porter Stemmer</li>
+                    <li>Perform lemmatizing on the tokens using WordNetLemmatizer</li>
                     <li>Convert class labels to int</li>
                 </ul>
             </li>
             <li>Convert the reviews to sparse matrix of Count vectors
                 <ul>
-                    <li>We have used Sci-kit library CountVectorizer to convert the reviews to sparse matrix.</li>
+                    <li>We have used Sci-kit library CountVectorizer to convert the reviews to sparse matrix</li>
                     <li>we have ignored the words who appear in more than 70% of the documents and have considered only the top 500 features to reduce the feature space.</li>
                 </ul>
             </li>
             <li>Split the data into test and training sets</li>
             <li>Compute the distance from a test instance (A member of the test set) to all members of the training set
                 <ul>
-                    <li>Euclidean distance is used as distance measure.</li>
-                    <li>Which is the Square root of sum of squares of the difference between the values of the instances.</li>
+                    <li>Euclidean distance is used as distance measure</li>
+                    <li>Which is the Square root of sum of squares of the difference between the values of the instances</li>
                 </ul>
             </li>
-            <li>Select the k nearest neighbours of the test instance</li>
-            <li>Assign the test instance to the class most represented in these nearest neighbours</li>
+            <li>Select the k nearest neighbours to the test instance</li>
+            <li>Assign the test instance to the class that appeared most in these nearest neighbours</li>
         </ul>
         <blockquote>
             <p>For this algorithm the distance between every instance of the test set has to calculated with every instance of test set, for this we tried using cartesian method, but this causes memory error and also takes a lot of time.<br>
@@ -190,24 +185,23 @@
             <li>Pre process the data using NLP techniques
                 <ul>
                     <li>Tokenize the reviews and remove stop words, emoticons, punctuations, non alphanumeric words</li>
-                    <li>Perform stemming on the tokens using Porter Stemmer.</li>
-                    <li>Perform lemmatizing on the tokens using WordNetLemmatizer.</li>
+                    <li>Perform stemming on the tokens using Porter Stemmer</li>
+                    <li>Perform lemmatizing on the tokens using WordNetLemmatizer</li>
                     <li>Convert class labels to int</li>
                 </ul>
             </li>
             <li>Split the data into test and training sets</li>
             <li>Calculate the total words in training data and it’s frequency</li>
             <li>Calculate the number of words in each class and it’s frequency in that class</li>
-            <li>Calculate the probability (likelihood) of a word being in a class and probability<br>
-                of each class</li>
-            <li>Compute the likelihood of the review in each class and choose the class with the maximum likelihood as a predicted class for that review.</li>
+            <li>Calculate the probability (likelihood) of a word being in a class and probability  of each class</li>
+            <li>Compute the likelihood of the review in each class and choose the class with the maximum likelihood as a predicted class for that review</li>
         </ul>
         <h2 id="expectationsaspects">Expectations/Aspects</h2>
         <h4 id="what-to-expect">1. What to expect?</h4>
         <p>The main aim of the project deliverable will be to predict the rating based on the reviews provided by the users.</p>
         <ol>
             <li>Data will be pre-processed using NLP techniques like Stemming and Lemmatization to make sense of the reviews provided by the customer and how harsh can that review be on the rating.</li>
-            <li>After pre processing the Negative Review column and Positive Review column we will combine them to make a single column “Review” which will be used as a input for the algorithms.</li>
+            <li>After pre processing the Negative Review column and Positive Review column will be combined to make a single column “Review” which will be used as a input for the algorithms.</li>
             <li>The data will be divided into training and test set and use training set to train the models and use test set to calculate the accuracy of the models based on the unseen data.</li>
             <li>Implementation of both the algorithms and a proper documentation of outcomes of this project, which is the prediction of rating for customers reviews.</li>
             <li>Compute the accuracy of the models.</li>
@@ -237,24 +231,30 @@
         </ul>
         <h2 id="installation">Installation</h2>
         <ol>
-            <li>Create a Spark Cluster on Amazon EMR and get the details of the cluster to use it on Terminal.<br>
-                Choose the following configuration for the cluster:</li>
-        </ol>
-        <pre><code>Spark: Spark 2.3.2 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0
+            <li>
+                <p>Create a Spark Cluster on Amazon EMR and get the details of the cluster to use it on Terminal.<br>
+                    Choose the following configuration for the cluster:</p>
+                <pre><code>Spark: Spark 2.3.2 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0
 </code></pre>
-        <ol start="2">
-            <li>Connect to the Cluster with the keypair you selected.<br>
-                You might need to add SHH rule to the Master EC2 Security group</li>
-        </ol>
-        <pre><code> ssh -i keypair.pem  hadoop@ec2-52-91-121-171.compute-1.amazonaws.com
+                <p>Follwing specification was choosen for the Instances.</p>
+                <pre><code>M3 General Purpose Extra Large (m3.xlarge),
+Memory: 15.0 GiB,
+CPU: 4 vCPUs,
+Storage: 80 GiB (2 * 40 GiB SSD)
 </code></pre>
-        <ol start="3">
-            <li>Copy all the Jupyter notebooks and Data files to Master EC2 instance</li>
-        </ol>
-        <blockquote>
-            <p>You can use WinScp or scp command to do this.</p>
-        </blockquote>
-        <ol start="4">
+            </li>
+            <li>
+                <p>Connect to the Cluster with the keypair you selected.<br>
+                    You might need to add SHH rule to the Master EC2 Security group</p>
+                <pre><code> ssh -i keypair.pem  hadoop@ec2-52-91-121-171.compute-1.amazonaws.com
+</code></pre>
+            </li>
+            <li>
+                <p>Copy all the Jupyter notebooks and Data files to Master EC2 instance</p>
+                <blockquote>
+                    <p>You can use WinScp or scp command to do this.</p>
+                </blockquote>
+            </li>
             <li>
                 <p>Install / Import following packages to the cluster.</p>
                 <pre><code>sudo pip install jupyter
@@ -266,7 +266,6 @@ sudo pip install -U nltk
                 <pre><code> import nltk
  nltk.download("stopwords")
  nltk.download("wordnet")
-
 </code></pre>
             </li>
             <li>
@@ -275,33 +274,35 @@ sudo pip install -U nltk
                     To connect to Slaves you have to login as <strong>ec2-user</strong></p>
                 <pre><code>ssh -i keypair.pem ec2-user@ec2-54-197-45-104.compute-1.amazonaws.com
 </code></pre>
+                <blockquote>
+                    <p>For nltk you have to move the <strong>nltk_data</strong> folder to “<strong>/home/</strong>” location</p>
+                </blockquote>
             </li>
-        </ol>
-        <blockquote>
-            <p>For nltk you have to move the <strong>nltk_data</strong> to “<strong>/home/</strong>” location</p>
-        </blockquote>
-        <ol start="6">
             <li>
                 <p>SSH to your AWS machine with port forwarding and Configure PySpark driver to use Jupyter Notebook<br>
                     For this while connecting to the instance you need to redirect all the request from a specific port from local machine to EC2 instance.</p>
-                <pre><code>  ssh -i nvirginia_kkorey.pem -L 8000:localhost:8889 hadoop@ec2-52-91-121-171.compute-1.amazonaws.com
+                <pre><code>ssh -i nvirginia_kkorey.pem -L 8000:localhost:8889 hadoop@ec2-52-91-121-171.compute-1.amazonaws.com
 </code></pre>
                 <p>Once connected you need to add some Environment variables to the path the master instance</p>
-                <pre><code>	export PYSPARK_DRIVER_PYTHON=jupyter    export
-	PYSPARK_DRIVER_PYTHON_OPTS='notebook --no-browser --port=8889'
-	source ~/.bashrc
+                <pre><code>export PYSPARK_DRIVER_PYTHON=jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook --no-browser --port=8889'
+source ~/.bashrc
 </code></pre>
             </li>
             <li>
                 <p>Access the Jupyter Notebook from your Web-Browser<br>
                     Type <code>pyspark</code> on your AWS machine and copy the Jupyter notebook token displayed.<br>
                     Go to your web-browser and navigate to the following URL:</p>
+                <pre><code>localhost:8000
+</code></pre>
+                <p>Paste the copied token in the required field and press  <strong>Log in</strong>.</p>
             </li>
         </ol>
-        <p><code>localhost:8000</code></p>
-        <p>Paste the copied token in the required field and press  <strong>Log in</strong>.</p>
         <h2 id="results">Results</h2>
-        <p>The models were executed in Amazon EMR Cluster:</p>
+        <p>The models were executed in Amazon EMR Cluster and accuracy is used as the evaluation metric to compare the algorithms.<br>
+            Since the feature we used is just bag-of-words the accuracy of the models is not high, if other features like word embedding with context window and TF-IDF are used the accuracy of the model can be increased.<br>
+            But, the main moto behined this project was to implement the algorithms in a distributed  way, which was accomplished and to verify the corretness of the algorithms, their accuracies were compared with the library versions of the same.<br>
+            As we can see from the below screen captures, there is only a difference of around <strong>5%</strong> between the implemented version and the library versions for both the algorithms.</p>
         <h4 id="k-nearest-neighbor-1">k-Nearest Neighbor:</h4>
         <ul>
             <li>
@@ -310,7 +311,7 @@ sudo pip install -U nltk
             </li>
             <li>
                 <p>Sk-learn library:<br>
-                    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/KNN_lib.png?raw=true=600x" alt="KNN Library"></p>
+                    <img src="images/KNN_lib.png?raw=true=600x" alt="KNN Library"></p>
             </li>
         </ul>
         <blockquote>
@@ -320,11 +321,11 @@ sudo pip install -U nltk
         <ul>
             <li>
                 <p>Implementation:<br>
-                    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NB.png?raw=true=600x" alt="Naive Bayes implementation"></p>
+                    <img src="images/NB.png?raw=true=600x" alt="Naive Bayes implementation"></p>
             </li>
             <li>
                 <p>Sk-learn library:<br>
-                    <img src="https://github.com/koreykiran/RatingPrediction/blob/master/images/NBLib.png?raw=true=600x" alt="Naive Bayes Library"></p>
+                    <img src="images/NBLib.png=600x" alt="Naive Bayes Library"></p>
             </li>
         </ul>
         <blockquote>
@@ -332,7 +333,7 @@ sudo pip install -U nltk
         </blockquote>
         <h2 id="conclusion">Conclusion:</h2>
         <ul>
-            <li>The objective of the project was to predict the rating based on the review and to implement the KNN and Naive Bayes algorithm in a distributed fashion which was accomplished successfully.</li>
+            <li>The objective of the project was to predict the rating based on the review and to implement the kNN and Naive Bayes algorithm in a distributed fashion which was accomplished successfully.</li>
             <li>The accuracy of the models could be improved by changing the features used, which is discussed in the future scope.</li>
         </ul>
         <h2 id="future-scope">Future Scope:</h2>
@@ -343,14 +344,18 @@ sudo pip install -U nltk
         </ul>
         <h2 id="code-snippet">Code Snippet:</h2>
         <ul>
-            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN.ipynb">kNN</a></li>
-            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/KNN_lib.ipynb">kNN - Sklearn</a></li>
-            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/NB.ipynb">Naive Bayes</a></li>
-            <li><a href="https://github.com/koreykiran/RatingPrediction/blob/master/NB-Library.ipynb">Naive Bayes - sklearn</a></li>
+            <li><a href="KNN.html">kNN</a></li>
+            <li><a href="KNN_lib.html">kNN - Sklearn</a></li>
+            <li><a href="NB.html">Naive Bayes</a></li>
+            <li><a href="NB-Library.html">Naive Bayes - sklearn</a></li>
         </ul>
         <h2 id="challenges-faced">Challenges Faced:</h2>
         <ul>
-            <li>Out of Memory Error was one of the biggest challenges that we faced, to resolve this issue we reduced the memory consumption by each task and also moved the execution of Algorithms from local machine to AWS EMR clustures.</li>
+            <li>Out of Memory Error was one of the biggest challenges that we faced, to resolve this issue we reduced the memory consumption by each task and also moved the execution of Algorithms from local machine to AWS EMR clustures.
+                <ul>
+                    <li>For kNN  we used the collect loop insted of cartesian product, which was consuming a lot of memory.</li>
+                </ul>
+            </li>
             <li>In AWS EMR we used 1-Master : 2-Slave architecture, at first we installed the necessary packages only in the master instance, but our method of implementation needed the packages to be installed in the slave instances as well, it took a while to figure this out and resolve this issue.</li>
             <li>When trying  to test the data with library implementation, ran out of memory even in EMR, so to parallelize the prediction and for this we had to brod cast the classifier object to the slave nodes.</li>
             <li>Could not find the scikit-learn library in DSBA hadoop cluster</li>
@@ -432,7 +437,7 @@ sudo pip install -U nltk
                 <p><a href="https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4">Setup PySpark in AWS cluster</a></p>
             </li>
             <li>
-                <p><a href="https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4">Install Spark in Ubuntu</a></p>
+                <p><a href="https://medium.com/@josemarcialportilla/installing-scala-and-spark-on-ubuntu-5665ee4b62b1">Install Spark in Ubuntu</a></p>
             </li>
         </ul>
 
