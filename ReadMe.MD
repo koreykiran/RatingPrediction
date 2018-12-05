@@ -270,7 +270,7 @@ As we can see from the below screen captures, there is only a difference of arou
 * We can choose better features like TF-IDF and consider bigram and Trigram possibilities and also perform feature union by choosing features like POS tagging and considering the similar words also for the words in the reviews.  
 * We can package this as a library for use by ecommerce websites.  
   
-## Code Snippet  
+## Code  
   
 * [kNN](docs/KNN.html)  
 * [kNN - Sklearn](docs/KNN_lib.html)  
