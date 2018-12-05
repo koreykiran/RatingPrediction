@@ -319,3 +319,5 @@ The complete project has been accomplished together with collabrating and taking
 * [Setup PySpark in AWS cluster](https://medium.com/@Vatsal410/running-pyspark-on-an-aws-cluster-through-jupyter-notebook-fe28f6ef47a4)  
   
 * [Install Spark in Ubuntu](https://medium.com/@josemarcialportilla/installing-scala-and-spark-on-ubuntu-5665ee4b62b1)
+
+## Source Code - [Github](https://github.com/koreykiran/RatingPrediction)
