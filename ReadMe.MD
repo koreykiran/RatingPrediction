@@ -7,7 +7,7 @@
 ## Authors    
 
 * Akshay Bankar (abankar1@uncc.edu)     
-* Keyukumar Hansoti (khansoti@uncc.edu)    
+* Keyurkumar Hansoti (khansoti@uncc.edu)    
 * Kiran Korey  (kkorey@uncc.edu)    
     
 ## Overview 
@@ -301,7 +301,7 @@ For Naive Bayes we used the complete data set i.e. 500K records.
 | Akshay Bankar | Split data into train and test |    
 |  | Compute accuracy of the model |    
 |  | Implementation of Naïve Bayes model with sci-kit libraries and comparison of the accuracy |    
-| Keyur Hansoti | Pre-processing |    
+| Keyurkumar Hansoti | Pre-processing |    
 |  | Build the model by Implementing Naïve Bayes |     
 |  | Make a web page illustrating your results |    
 |  | Compare the results |    
